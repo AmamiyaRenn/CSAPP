@@ -951,7 +951,7 @@ Disassembly of section .text:
 00000000004019d0 <mid_farm>:
   4019d0:	b8 01 00 00 00       	mov    $0x1,%eax
   4019d5:	c3                   	retq   
-
+; TODO: lea
 00000000004019d6 <add_xy>:
   4019d6:	48 8d 04 37          	lea    (%rdi,%rsi,1),%rax
   4019da:	c3                   	retq   

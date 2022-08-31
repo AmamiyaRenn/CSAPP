@@ -424,7 +424,7 @@ Disassembly of section .text:
   4011aa:	5b                   	pop    %rbx
   4011ab:	5d                   	pop    %rbp
   4011ac:	c3                   	retq   
-; TODO: main
+
 00000000004011ad <main>:
   4011ad:	41 56                	push   %r14
   4011af:	41 55                	push   %r13
@@ -773,7 +773,7 @@ Disassembly of section .text:
   4017a5:	90                   	nop
   4017a6:	90                   	nop
   4017a7:	90                   	nop
-; TODO: getbuf
+
 00000000004017a8 <getbuf>:
   4017a8:	48 83 ec 28          	sub    $0x28,%rsp
   4017ac:	48 89 e7             	mov    %rsp,%rdi
@@ -783,7 +783,7 @@ Disassembly of section .text:
   4017bd:	c3                   	retq   
   4017be:	90                   	nop
   4017bf:	90                   	nop
-; TODO: touch1
+
 00000000004017c0 <touch1>:
   4017c0:	48 83 ec 08          	sub    $0x8,%rsp
   4017c4:	c7 05 0e 2d 20 00 01 	movl   $0x1,0x202d0e(%rip)        # 6044dc <vlevel>
@@ -896,7 +896,7 @@ Disassembly of section .text:
   401959:	e8 f1 03 00 00       	callq  401d4f <fail>
   40195e:	bf 00 00 00 00       	mov    $0x0,%edi
   401963:	e8 d8 f4 ff ff       	callq  400e40 <exit@plt>
-; TODO: test
+
 0000000000401968 <test>:
   401968:	48 83 ec 08          	sub    $0x8,%rsp
   40196c:	b8 00 00 00 00       	mov    $0x0,%eax
@@ -965,7 +965,7 @@ Disassembly of section .text:
   401a31:	e8 ba f3 ff ff       	callq  400df0 <__printf_chk@plt>
   401a36:	bf 01 00 00 00       	mov    $0x1,%edi
   401a3b:	e8 00 f4 ff ff       	callq  400e40 <exit@plt>
-; TODO: Gets
+
 0000000000401a40 <Gets>:
   401a40:	41 54                	push   %r12
   401a42:	55                   	push   %rbp
