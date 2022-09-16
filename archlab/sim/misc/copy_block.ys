@@ -1,0 +1,43 @@
+# Execution begins at address 0 
+	.pos 0
+	irmovq stack, %rsp  	# Set up stack pointer
+	call main		# Execute main program
+	halt			# Terminate program 
+
+.align 8
+# Source block
+src:
+	.quad 0x00a
+	.quad 0x0b0
+	.quad 0xc00
+# Destination block
+dest:
+	.quad 0x111
+	.quad 0x222
+	.quad 0x333
+
+main:
+	irmovq src,%rdi
+	irmovq dest,%rsi
+	irmovq $3,%rdx
+	call copy_block		
+	ret
+
+# long copy_block(long *src, long *dest, long len)
+# src in %rdi, dest in %rsi, len in %rdx
+copy_block:
+    xorq %rax,%rax
+    andq %rdi,%rdi
+	je    Return       
+    pushq %rbx           # 因为val会被下一个调用改变，所以要保存起来
+    mrmovq (%rdi),%rbx   # long val = ls->val
+    mrmovq 8(%rdi),%rdi   # ls = ls->next 
+    call copy_block
+	addq %rbx,%rax       # Add to val
+    popq %rbx
+Return:
+	ret                  # Return
+
+# Stack starts here and grows to lower addresses
+	.pos 0x200
+stack:
