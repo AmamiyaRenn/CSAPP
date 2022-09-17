@@ -28,14 +28,18 @@ main:
 copy_block:
     xorq %rax,%rax
     andq %rdi,%rdi
-	je    Return       
-    pushq %rbx           # 因为val会被下一个调用改变，所以要保存起来
-    mrmovq (%rdi),%rbx   # long val = ls->val
-    mrmovq 8(%rdi),%rdi   # ls = ls->next 
-    call copy_block
-	addq %rbx,%rax       # Add to val
-    popq %rbx
-Return:
+    irmovq $8,%r8
+    irmovq $1,%r9
+	je    return       
+while:
+    mrmovq (%rdi),%rcx   # long val = *src
+    addq %r8,%rdi         # src++
+    rmmovq %rcx,(%rsi)   # *dest = val
+    addq %r8,%rsi         # dest++
+    xorq %rcx,%rax       # result ^= val
+    subq %r9,%rdx
+    jg while
+return:
 	ret                  # Return
 
 # Stack starts here and grows to lower addresses
